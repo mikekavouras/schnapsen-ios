@@ -71,16 +71,16 @@ struct GameActionView: View {
                             .shadow(radius: 2)
                     }
                     if let vCard = round.currentTurn.viewerPlay {
-//                        Group {
+                        Group {
                             Image(vCard.imageName)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: cardWidth)
                                 .cornerRadius(8.0)
                                 .shadow(radius: 2)
-//                                .offset(y: -24)
+                                .offset(y: -24)
                                 .matchedGeometryEffect(id: vCard.id, in: animation)
-//                        }.offset(y: 24)
+                        }.offset(y: 24)
                     } else {
                         Image("empty")
                             .resizable()

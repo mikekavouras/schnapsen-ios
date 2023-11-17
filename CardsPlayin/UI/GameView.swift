@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import PusherSwift
 
 struct GameView: View {
     @Namespace private var animation
+    
     @StateObject var viewModel = GameViewModel()
+    @EnvironmentObject var socket: Socket
+    
     @State private var roundIsOver: Bool = false
     @State private var gameIsOver: Bool = false
     @State private var showLastTrick: Bool = false
-
+    @State private var showUserSettings: Bool = false
     @State private var showCloseHandConfirmation = false
     
     var viewer: Player {
@@ -32,6 +36,15 @@ struct GameView: View {
                         .resizable()
                         .frame(width: 50, height: 50)
                         .mask(Circle())
+                        .onTapGesture {
+                            showUserSettings.toggle()
+                        }
+                    if viewer.isOnline {
+                        Circle()
+                            .frame(width: 4, height: 4)
+                            .offset(y: 32)
+                            .foregroundStyle(.green)
+                    }
                     if viewModel.game.previousWinner == viewer {
                         Circle()
                             .stroke(Color.yellow, lineWidth: 2.0)
@@ -55,6 +68,12 @@ struct GameView: View {
                         .resizable()
                         .frame(width: 50, height: 50)
                         .mask(Circle())
+                    if opponent.isOnline {
+                        Circle()
+                            .frame(width: 4, height: 4)
+                            .offset(y: 32)
+                            .foregroundStyle(.green)
+                    }
                     if viewModel.game.previousWinner == opponent {
                         Circle()
                             .stroke(Color.yellow, lineWidth: 2.0)
@@ -126,6 +145,9 @@ struct GameView: View {
         .sheet(isPresented: $showLastTrick, content: {
             LastTrickView(round: viewModel.game.currentRound)
                 .presentationDetents([.medium])
+        })
+        .sheet(isPresented: $showUserSettings, content: {
+            UserSettingsView(player: viewer, socket: socket)
         })
         .onAppear {
             viewModel.game.newRound()

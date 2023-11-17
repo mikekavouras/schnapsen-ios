@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PusherSwift
 
 enum GameType {
     case schnapsen
@@ -42,6 +43,7 @@ struct Game {
         
         return nil
     }
+    
     
     init() {
         currentRound = Round([

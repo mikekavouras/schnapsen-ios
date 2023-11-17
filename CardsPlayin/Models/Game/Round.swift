@@ -52,6 +52,8 @@ struct Round {
         var deck = Deck.for(.schnapsen)
         deck.shuffle()
         self.deck = deck
+        
+        print(players.map { $0.id })
     }
     
     /// `deal` gives each player 5 cards and sets the principal card.

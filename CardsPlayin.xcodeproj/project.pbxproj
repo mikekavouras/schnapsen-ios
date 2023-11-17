@@ -41,7 +41,11 @@
 		8D52EF2A2AFD88F20078FE65 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52EF282AFD875C0078FE65 /* Round.swift */; };
 		8D52EF2C2AFDD92A0078FE65 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52EF2B2AFDD92A0078FE65 /* Hand.swift */; };
 		8D52EF2E2AFDD9AB0078FE65 /* ClosedHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52EF2D2AFDD9AB0078FE65 /* ClosedHand.swift */; };
+		8D57AFF52B068A7F003DE5A8 /* Other.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D57AFF42B068A7F003DE5A8 /* Other.plist */; };
+		8D57AFF82B06E814003DE5A8 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57AFF72B06E814003DE5A8 /* UserSettingsView.swift */; };
+		8D57AFFB2B072C48003DE5A8 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57AFFA2B072C48003DE5A8 /* Socket.swift */; };
 		8D8118922AFFFAF500ECCAB4 /* LastTrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8118912AFFFAF500ECCAB4 /* LastTrickView.swift */; };
+		8D81DC1B2B06715C006533FE /* PusherSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D81DC1A2B06715C006533FE /* PusherSwift */; };
 		8DB7AF082B030C95001C2A0A /* EndOfGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7AF072B030C95001C2A0A /* EndOfGameView.swift */; };
 		8DD837DF2B02720D0007D729 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD837DE2B02720D0007D729 /* CardView.swift */; };
 		8DE6046D2AFFADC300FF9217 /* EndOfRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6046C2AFFADC300FF9217 /* EndOfRoundView.swift */; };
@@ -88,6 +92,9 @@
 		8D52EF282AFD875C0078FE65 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		8D52EF2B2AFDD92A0078FE65 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		8D52EF2D2AFDD9AB0078FE65 /* ClosedHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedHand.swift; sourceTree = "<group>"; };
+		8D57AFF42B068A7F003DE5A8 /* Other.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Other.plist; sourceTree = "<group>"; };
+		8D57AFF72B06E814003DE5A8 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		8D57AFFA2B072C48003DE5A8 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		8D8118912AFFFAF500ECCAB4 /* LastTrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTrickView.swift; sourceTree = "<group>"; };
 		8DB7AF072B030C95001C2A0A /* EndOfGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGameView.swift; sourceTree = "<group>"; };
 		8DD837DE2B02720D0007D729 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D81DC1B2B06715C006533FE /* PusherSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +157,7 @@
 				8D52EEE92AFBE2660078FE65 /* ViewModels */,
 				8D52EEE82AFBE24C0078FE65 /* UI */,
 				8D4C59562A71ED44002A29BE /* Models */,
+				8D57AFF42B068A7F003DE5A8 /* Other.plist */,
 				8D4C594C2A71ECC6002A29BE /* Assets.xcassets */,
 				8D4C594E2A71ECC6002A29BE /* Preview Content */,
 			);
@@ -166,17 +175,8 @@
 		8D4C59562A71ED44002A29BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DD4FA2AF5CF76008D207E /* Game.swift */,
-				8D52EF2B2AFDD92A0078FE65 /* Hand.swift */,
-				8D52EF2D2AFDD9AB0078FE65 /* ClosedHand.swift */,
-				8D52EF282AFD875C0078FE65 /* Round.swift */,
-				8D4C595D2A71ED7A002A29BE /* Deck.swift */,
-				8D4C595F2A71EDA2002A29BE /* Player.swift */,
-				8D4C595B2A71ED51002A29BE /* Card.swift */,
-				8D4C59572A71ED4B002A29BE /* Suit.swift */,
-				8D16E8D12AF98AD50084E4A6 /* Turn.swift */,
-				8D16E8D32AF98AD90084E4A6 /* Marriage.swift */,
-				8D4C59592A71ED4F002A29BE /* Rank.swift */,
+				8D57AFF92B072C3A003DE5A8 /* Game */,
+				8D57AFFA2B072C48003DE5A8 /* Socket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,6 +194,7 @@
 				8D52EF242AFD71930078FE65 /* ActionButtonView.swift */,
 				8DD837DE2B02720D0007D729 /* CardView.swift */,
 				8DE6046C2AFFADC300FF9217 /* EndOfRoundView.swift */,
+				8D57AFF72B06E814003DE5A8 /* UserSettingsView.swift */,
 				8DB7AF072B030C95001C2A0A /* EndOfGameView.swift */,
 			);
 			path = UI;
@@ -205,6 +206,24 @@
 				8D52EEEA2AFBE2DD0078FE65 /* GameViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8D57AFF92B072C3A003DE5A8 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DD4FA2AF5CF76008D207E /* Game.swift */,
+				8D52EF2B2AFDD92A0078FE65 /* Hand.swift */,
+				8D52EF2D2AFDD9AB0078FE65 /* ClosedHand.swift */,
+				8D52EF282AFD875C0078FE65 /* Round.swift */,
+				8D4C595D2A71ED7A002A29BE /* Deck.swift */,
+				8D4C595F2A71EDA2002A29BE /* Player.swift */,
+				8D4C595B2A71ED51002A29BE /* Card.swift */,
+				8D4C59572A71ED4B002A29BE /* Suit.swift */,
+				8D16E8D12AF98AD50084E4A6 /* Turn.swift */,
+				8D16E8D32AF98AD90084E4A6 /* Marriage.swift */,
+				8D4C59592A71ED4F002A29BE /* Rank.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +260,9 @@
 			dependencies = (
 			);
 			name = CardsPlayin;
+			packageProductDependencies = (
+				8D81DC1A2B06715C006533FE /* PusherSwift */,
+			);
 			productName = CardsPlayin;
 			productReference = 8D4C59452A71ECC4002A29BE /* CardsPlayin.app */;
 			productType = "com.apple.product-type.application";
@@ -273,6 +295,9 @@
 				Base,
 			);
 			mainGroup = 8D4C593C2A71ECC4002A29BE;
+			packageReferences = (
+				8D81DC192B06715C006533FE /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
+			);
 			productRefGroup = 8D4C59462A71ECC4002A29BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -297,6 +322,7 @@
 			files = (
 				8D4C59502A71ECC6002A29BE /* Preview Assets.xcassets in Resources */,
 				8D4C594D2A71ECC6002A29BE /* Assets.xcassets in Resources */,
+				8D57AFF52B068A7F003DE5A8 /* Other.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +360,7 @@
 				8D52EEEB2AFBE2DD0078FE65 /* GameViewModel.swift in Sources */,
 				8DE6046D2AFFADC300FF9217 /* EndOfRoundView.swift in Sources */,
 				8D0DD4FB2AF5CF76008D207E /* Game.swift in Sources */,
+				8D57AFF82B06E814003DE5A8 /* UserSettingsView.swift in Sources */,
 				8D4C594B2A71ECC4002A29BE /* ContentView.swift in Sources */,
 				8DB7AF082B030C95001C2A0A /* EndOfGameView.swift in Sources */,
 				8D16E8DA2AF9DA970084E4A6 /* OpponentHandView.swift in Sources */,
@@ -341,6 +368,7 @@
 				8D4C595A2A71ED4F002A29BE /* Rank.swift in Sources */,
 				8D16E8DC2AF9DB690084E4A6 /* ViewerHandView.swift in Sources */,
 				8D4C595C2A71ED51002A29BE /* Card.swift in Sources */,
+				8D57AFFB2B072C48003DE5A8 /* Socket.swift in Sources */,
 				8D52EF292AFD875C0078FE65 /* Round.swift in Sources */,
 				8D4C59602A71EDA2002A29BE /* Player.swift in Sources */,
 				8D16E8D82AF9DA6E0084E4A6 /* GameActionView.swift in Sources */,
@@ -537,6 +565,7 @@
 				DEVELOPMENT_TEAM = A56D86G827;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Schnapsen;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -571,6 +600,7 @@
 				DEVELOPMENT_TEAM = A56D86G827;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = Schnapsen;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -625,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8D81DC192B06715C006533FE /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pusher/pusher-websocket-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8D81DC1A2B06715C006533FE /* PusherSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D81DC192B06715C006533FE /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */;
+			productName = PusherSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8D4C593D2A71ECC4002A29BE /* Project object */;
 }
