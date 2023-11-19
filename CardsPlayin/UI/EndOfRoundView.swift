@@ -55,9 +55,14 @@ struct EndOfRoundView: View {
                             .frame(width: 70, height: 70)
                             .mask(Circle())
                             .shadow(radius: 2)
-                        Text("\(opponent.score)")
-                            .foregroundStyle(.black)
-                            .bold()
+                        if #available(iOS 16, *) {
+                            Text("\(opponent.score)")
+                                .foregroundStyle(.black)
+                                .bold()
+                        } else {
+                            Text("\(opponent.score)")
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
                 .buttonStyle(.borderedProminent)

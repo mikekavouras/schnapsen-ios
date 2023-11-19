@@ -8,6 +8,12 @@
 import Foundation
 import PusherSwift
 
+enum Event: String {
+    case joinedRoom = "joined-room"
+    case leftRoom = "left-room"
+    case playedCard = "played-card"
+}
+
 class Socket: ObservableObject, PusherDelegate {
     static let main = Socket()
     var connectionState: ConnectionState = .disconnected
@@ -30,27 +36,24 @@ class Socket: ObservableObject, PusherDelegate {
         pusher.connect()
     }
     
-    func createChannel(`for` player: Player) {
+    func createChannel(_ player: Player) {
         let name = Int.random(in: 10000...99999)
-        channel = pusher.subscribe("schnapsen-\(name)")
-        sendEvent("player:joined", data: [
-            "playerId": player.id,
-            "channelName": channel!.name
-        ])
+        subscribe(player, to: "\(name)", isHost: true)
     }
     
-    func subscribe(channelName: String) {
+    func subscribe(_ player: Player, `to` channelName: String, isHost: Bool, needsSync: Bool = false) {
         channel = pusher.subscribe(channelName: channelName)
+        sendEvent(.joinedRoom(player.id, channelName, needsSync, isHost))
     }
     
-    func unsubscribe() {
+    func unsubscribe(_ player: Player, from channelName: String) {
         channel = nil
+        sendEvent(.leftRoom(player.id, channelName, player.isHost))
     }
     
     func changedConnectionState(from old: ConnectionState, to new: ConnectionState) {
         if new == .disconnected {
             print("disconnected")
-            channel = nil
         }
         connectionState = new
     }
@@ -59,21 +62,24 @@ class Socket: ObservableObject, PusherDelegate {
 //        print(message)
     }
     
-    func sendEvent(_ name: String, data: [String:Any]) {
-        let f: [String:Any] = [
-            "event": name,
-            "payload": data // TODO: update API
+    func sendEvent(_ r: Router) {
+        let data: [String: Any] = [
+            "channelName": channel?.name ?? "",
+            "socketId": pusher.connection.socketId ?? ""
         ]
         
-        guard let json = try? JSONSerialization.data(withJSONObject: f) else {
+        let req: [String:Any] = ["data": data.merging(r.params, uniquingKeysWith: { _, theirs in theirs })]
+        
+        guard let json = try? JSONSerialization.data(withJSONObject: req) else {
             print("bad json")
             return
         }
         
-        let url = URL(string: "https://2f32c7c7c488.ngrok.app/events")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "POST"
+        var request = URLRequest(url: r.url)
+        for (k, v) in r.headers {
+            request.setValue(v, forHTTPHeaderField: k)
+        }
+        request.httpMethod = r.method
         request.httpBody = json
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -81,4 +87,48 @@ class Socket: ObservableObject, PusherDelegate {
 
         task.resume()
     }
+}
+
+
+enum Router {
+    case joinedRoom(String, String, Bool, Bool)
+    case leftRoom(String, String, Bool)
+    
+    var url: URL {
+        let str = switch self {
+        case .joinedRoom:
+            Event.joinedRoom.rawValue
+        case .leftRoom:
+            Event.leftRoom.rawValue
+        }
+        
+        return URL(string: "https://c00138812c38.ngrok.app/events/\(str)")!
+    }
+    
+    var method: String {
+        return "POST"
+    }
+    
+    var headers: [String:String] {
+        ["Accept": "application/json"]
+    }
+    
+    var params: [String:Any] {
+        switch self {
+        case .joinedRoom(let playerId, let channelName, let needsSync, let isHost):
+            return [
+                "playerId": playerId,
+                "channelName": channelName,
+                "needsSync": needsSync,
+                "isHost": isHost,
+            ]
+        case .leftRoom(let playerId, let channelName, let isHost):
+            return [
+                "isHost": isHost,
+                "channelName": channelName,
+                "playerId": playerId
+            ]
+        }
+    }
+    
 }

@@ -10,6 +10,7 @@ import Foundation
 struct Player: Equatable {
     let isViewer: Bool
     var isOnline = false
+    var isHost = false
     var cards: [Card] = []
     var tricks: [[Card]] = [] // TODO: would make more sense as a tuple (Card, Card)
     var marriages: [Marriage] = []

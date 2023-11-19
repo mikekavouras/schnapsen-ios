@@ -12,7 +12,7 @@ struct GameView: View {
     @Namespace private var animation
     
     @StateObject var viewModel = GameViewModel()
-    @EnvironmentObject var socket: Socket
+    @StateObject var socket = Socket.main
     
     @State private var roundIsOver: Bool = false
     @State private var gameIsOver: Bool = false
@@ -131,23 +131,40 @@ struct GameView: View {
                 viewModel.game.newRound()
             }
         }, content: {
-            EndOfRoundView(viewModel.game.currentRound)
-                .presentationDetents([.medium])
+            if #available(iOS 16, *) {
+                EndOfRoundView(viewModel.game.currentRound)
+                    .presentationDetents([.medium])
+            } else {
+                EndOfRoundView(viewModel.game.currentRound)
+            }
         })
         .sheet(isPresented: $gameIsOver, onDismiss: {
             withAnimation(.linear(duration: 0.3)) {
                 viewModel.newGame()
             }
         }, content: {
-            EndOfGameView(viewModel.game)
-                .presentationDetents([.medium])
+            if #available(iOS 16, *) {
+                EndOfGameView(viewModel.game)
+                    .presentationDetents([.medium])
+            } else {
+                EndOfGameView(viewModel.game)
+            }
         })
         .sheet(isPresented: $showLastTrick, content: {
-            LastTrickView(round: viewModel.game.currentRound)
-                .presentationDetents([.medium])
+            if #available(iOS 16.0, *) {
+                LastTrickView(round: viewModel.game.currentRound)
+                    .presentationDetents([.medium])
+            } else {
+                LastTrickView(round: viewModel.game.currentRound)
+            }
         })
         .sheet(isPresented: $showUserSettings, content: {
-            UserSettingsView(player: viewer, socket: socket)
+            UserSettingsView(socket: socket, player: viewer)
+        })
+        .alert("Your opponent has left the game", isPresented: $viewModel.opponentDidDisconnect, actions: {
+            Button("Leave game", role: .destructive) {
+                viewModel.newGame()
+            }
         })
         .onAppear {
             viewModel.game.newRound()

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var socket = Socket.main
     var body: some View {
         GameView()
-            .environmentObject(socket)
     }
 }
 

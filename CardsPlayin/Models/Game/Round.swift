@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PusherSwift
 
 struct Round {
     var deck: Deck
@@ -73,7 +74,7 @@ struct Round {
         principalCard!.isFlipped = false
     }
     
-    mutating func play(_ card: Card, `for` player: Player) -> Turn? {
+    mutating func play(_ card: Card, `for` player: Player, `on` channel: PusherChannel? = nil) -> Turn? {
         let cIdx = player.cards.firstIndex(of: card)!
         let pIdx = players.firstIndex(of: player)!
         
@@ -83,13 +84,19 @@ struct Round {
         
         if player == viewer {
             currentTurn.viewerPlay = aCard
-            if currentTurn.opponentPlay == nil {
+            if !viewer.isOnline && currentTurn.opponentPlay == nil {
                 let oIdx = players.firstIndex(where: { $0 != player })!
                 var oppoCard = players[oIdx].play(against: card)
                 oppoCard.isFlipped = false
                 currentTurn.opponentPlay = oppoCard
+            } else {
+//                Socket.main.sendEvent(.playedCard, data: [
+//                    "channelName": channel?.name ?? "",
+//                    "playerId": player.id
+//                ])
+                return nil
             }
-            
+    
             return executeTurn()
         } else {
             currentTurn.opponentPlay = aCard

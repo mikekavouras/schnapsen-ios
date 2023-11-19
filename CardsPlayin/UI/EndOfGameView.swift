@@ -49,9 +49,14 @@ struct EndOfGameView: View {
                             .frame(width: 70, height: 70)
                             .mask(Circle())
                             .shadow(radius: 2)
-                        Text("\(game.opponentPoints)")
-                            .foregroundStyle(.black)
-                            .bold()
+                        if #available(iOS 16, *) {
+                            Text("\(game.opponentPoints)")
+                                .foregroundStyle(.black)
+                                .bold()
+                        } else {
+                            Text("\(game.opponentPoints)")
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
                 .buttonStyle(.borderedProminent)

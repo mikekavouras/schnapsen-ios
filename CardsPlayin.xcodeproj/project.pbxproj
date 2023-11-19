@@ -52,6 +52,7 @@
 		8DE6046E2AFFBE5000FF9217 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52EF2B2AFDD92A0078FE65 /* Hand.swift */; };
 		8DE6046F2AFFBE5000FF9217 /* ClosedHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52EF2D2AFDD9AB0078FE65 /* ClosedHand.swift */; };
 		8DE8F61A2AF9440B00DCA2E8 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8F6192AF9440B00DCA2E8 /* PlayerTests.swift */; };
+		8DFBC9AE2B0857FC0067DED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFBC9AD2B0857FC0067DED5 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		8DD837DE2B02720D0007D729 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8DE6046C2AFFADC300FF9217 /* EndOfRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfRoundView.swift; sourceTree = "<group>"; };
 		8DE8F6192AF9440B00DCA2E8 /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		8DFBC9AD2B0857FC0067DED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				8D57AFF42B068A7F003DE5A8 /* Other.plist */,
 				8D4C594C2A71ECC6002A29BE /* Assets.xcassets */,
 				8D4C594E2A71ECC6002A29BE /* Preview Content */,
+				8DFBC9AD2B0857FC0067DED5 /* AppDelegate.swift */,
 			);
 			path = CardsPlayin;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				8D4C594B2A71ECC4002A29BE /* ContentView.swift in Sources */,
 				8DB7AF082B030C95001C2A0A /* EndOfGameView.swift in Sources */,
 				8D16E8DA2AF9DA970084E4A6 /* OpponentHandView.swift in Sources */,
+				8DFBC9AE2B0857FC0067DED5 /* AppDelegate.swift in Sources */,
 				8D52EF252AFD71930078FE65 /* ActionButtonView.swift in Sources */,
 				8D4C595A2A71ED4F002A29BE /* Rank.swift in Sources */,
 				8D16E8DC2AF9DB690084E4A6 /* ViewerHandView.swift in Sources */,
@@ -573,6 +577,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,6 +613,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
